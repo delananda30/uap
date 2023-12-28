@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <title>Result</title>
+</head>
+
+<body>
+    <div class="card text-center border-2 rounded-3" style="border-color: #545454; width: 420px; margin: 20px auto 10px;">
+        <div class="card-header" style="font-weight: bold; background-color: #545454; font-size: 55px; color: white;">
+            {{ labels[pred] }}
+        </div>
+        <div class="card-body border-2" style="border-color: #545454">
+            <div class="card border-2 rounded-3" id="image-preview-container" style="border-color: #545454; width: 180px; margin: 5px auto; text-align: center;">
+                <img class="img-fluid" src="{{ url_for('static', filename=img) }}"  id="image-preview" alt="Preview" style="width: 170px; margin: auto;">
+            </div>   
+        </div>
+        <div class="card-footer text-body-secondary border-2" style="background-color: #F2F2F2; border-color: #545454">
+          <p style="margin: 5px auto">Accuracy: {{ (probs|max) }}%</p>
+          <p style="margin: 5px auto">Prediction Time: {{ (run_time) }} second</p>
+          <a href="{{ url_for('index') }}?timestamp={{ timestamp }}" class="btn" style="background-color: #ffffff; width: 90%; color: #545454; margin: 5px auto;">BACK</a>
+        </div>
+    </div>
+
+    <div class="card border-2 rounded-3" style="border-color: #545454; background-color:#F2F2F2; width: 420px; margin: 10px auto 10px;">
+        <img class="img" src="../static/assets/1.png" alt="#">
+    </div>
+
+</body>

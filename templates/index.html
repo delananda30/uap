@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <title> RPS Prediction</title>
+</head>
+
+<body>
+    <form action="/predict" method="post" enctype="multipart/form-data">
+
+        <div class="card border-2 rounded-3" style="border-color: #545454; background-color:#F2F2F2; width: 420px; margin: 20px auto 10px;">
+            <img class="img" src="../static/assets/1.png" alt="#">
+        </div>
+        
+        <div class="card border-2 rounded-3" style="border-color: #545454; width: 420px; margin: 10px auto 20px;">
+            <img class="img1" src="../static/assets/3.png" alt="#">
+            
+            <div class="card border-2 rounded-3" id="image-preview-container" style="display: none; border-color: #545454; width: 180px; margin: 10px auto; text-align: center;">
+                <img class="img2" id="image-preview" alt="Preview" style="width: 170px; margin: auto;">
+            </div>            
+        
+            <input class="form-control" id="image-source" type="file" name="file"
+                alt="Input Image" accept="image/jpeg,image/jpg,image/png" required onchange="previewImage()" style="width: 90%; margin: 10px auto;">
+            <input type="submit" value="PREDICT" class="btn" style="background-color: #545454; width: 90%; color: #fff; font-weight: bold; margin: 10px auto;">
+        </div>
+    </form>
+</body>
+
+    <script>
+        function previewImage() {
+            var fileInput = document.getElementById('image-source');
+            var imagePreviewContainer = document.getElementById('image-preview-container');
+            var imagePreview = document.getElementById('image-preview');
+    
+            var file = fileInput.files[0];
+            var reader = new FileReader();
+    
+            reader.onload = function (e) {
+                imagePreview.src = e.target.result;
+                imagePreviewContainer.style.display = 'block';
+            }
+                
+            if (file) {
+                reader.readAsDataURL(file);
+            } else {
+                imagePreview.src = '#';
+                imagePreviewContainer.style.display = 'none';
+            }
+        }
+    </script>
+</body>

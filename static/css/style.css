@@ -1,0 +1,16 @@
+body {
+    background-image: url('../assets/2.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.img {
+    width: 400px;
+    margin: 0 auto;
+}
+
+.img1 {
+    width: 200px;
+    margin: 0 auto;
+}
